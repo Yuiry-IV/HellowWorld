@@ -3,13 +3,13 @@
 
 #include "stdafx.h"
 
-
 int _tmain(int argc, _TCHAR* argv[])
-{
+{	
 	DEBUGPRINT( ("argc = %d\n", argc) );
-	DEBUGPRINT( ("blah\n") );
-	DEBUGPRINT( ("%ws\n", argv[0]) );
-	DEBUGPRINT( ((char *)argv[0]) );
+	DEBUGPRINT( ("Hello world.\n") );
+
+	DEBUGPRINT( ("%s %s\n", "Hello", "world") );
+	DEBUGPRINT( ("%s\n", "Hello world") );
 	return 0;
 }
 
