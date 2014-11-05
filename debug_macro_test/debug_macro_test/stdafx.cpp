@@ -38,22 +38,17 @@ std::string dbu_prefix(char * file, int line)
 
 std::string dbu_format(char * format, ...)
 {
-	va_list args;
-	int     len;
-	char    *buffer;
+	va_list args(0);	
 
 	// retrieve the variable arguments
 	va_start(args, format);
 
-	len = _vscprintf(format, args) // _vscprintf doesn't count
+	int len = _vscprintf(format, args) // _vscprintf doesn't count
 		+ 1; // terminating '\0'
 
-	buffer = (char*)_alloca(len * sizeof(char));
+	char *bufferbuffer = (char*)_alloca(len * sizeof(char));
 
-	vsprintf(buffer, format, args); // C4996
-	// Note: vsprintf is deprecated; consider using vsprintf_s instead
-	//puts(buffer);
+	vsprintf(buffer, format, args); // C4996 Note: vsprintf is deprecated; consider using vsprintf_s instead	
 
 	return std::string(buffer);
-	//free(buffer);
 }
