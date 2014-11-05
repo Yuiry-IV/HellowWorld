@@ -36,7 +36,7 @@ std::string dbu_prefix(char * file, int line)
 	return s.str();
 }
 
-std::string dbu_format(char * format, ...)
+std::string dbu_format(const char * format, ...)
 {
 	va_list args(0);	
 
@@ -46,7 +46,7 @@ std::string dbu_format(char * format, ...)
 	int len = _vscprintf(format, args) // _vscprintf doesn't count
 		+ 1; // terminating '\0'
 
-	char *bufferbuffer = (char*)_alloca(len * sizeof(char));
+	char *buffer = (char*)_alloca(len * sizeof(char));
 
 	vsprintf(buffer, format, args); // C4996 Note: vsprintf is deprecated; consider using vsprintf_s instead	
 
