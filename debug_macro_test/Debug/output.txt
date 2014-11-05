@@ -1,0 +1,4 @@
+[\debug_macro_test.cpp:0008] argc = 1
+[\debug_macro_test.cpp:0009] Hello world.
+[\debug_macro_test.cpp:0011] Hello world.
+[\debug_macro_test.cpp:0012] Hello world.
