@@ -17,11 +17,19 @@
 
 std::string dbu_prefix(char * file, int line)
 {
-	std::string sf(file);
+	std::string sf(file?file:"null");
 
 	std::stringstream s;
 	s << '[';
-	s << sf.erase( 0, sf.rfind('\\') );
+	if (sf.rfind('\\') != -1)
+	{
+		s << "<";
+		s << sf.erase(0, sf.rfind('\\') + 1);
+	}
+	else
+	{
+		s << sf;
+	}
 	s << ':';
 	s <<std::setw(4)<<std::setfill('0')<< line;
 	s << ']';
