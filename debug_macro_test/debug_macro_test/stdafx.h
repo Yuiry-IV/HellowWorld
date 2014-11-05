@@ -7,14 +7,15 @@
 
 #include "targetver.h"
 
+#include <string>
+
 #include <stdio.h>
 #include <tchar.h>
 
-// debugging macros so we can pin down message origin at a glance
-#define WHERESTR  "[file %s, line %d]: "
-#define WHEREARG  __FILE__, __LINE__
-#define DEBUGPRINT2(...)		fprintf(stdout, __VA_ARGS__)
-#define DEBUGPRINT( x ) DEBUGPRINT2 x
+extern std::string dbu_prefix(char * file, int line);
+extern std::string dbu_format(char * format, ...);
+
+#define DEBUGPRINT( ... ) printf( "%s %s\n", dbu_prefix(__FILE__, __LINE__).c_str(), dbu_format( __VA_ARGS__ ).c_str() )
 //...
 // DEBUGPRINT("hey, x=%d\n", x);
 
