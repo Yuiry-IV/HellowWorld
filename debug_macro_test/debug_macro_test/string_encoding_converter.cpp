@@ -6,7 +6,12 @@
 
 std::string wstring_to_string(const std::wstring &ws)
 {		
-	const unsigned int cp = 20866/*CP_ACP*/;
+	// WideCharToMultiByte function:
+	// http://msdn.microsoft.com/en-us/library/windows/desktop/dd374130(v=vs.85).aspx
+	// Code pages list:
+    // http://msdn.microsoft.com/en-us/library/aa288104(v=vs.71).aspx
+	const unsigned int cp = 20866 // cskoi8r; koi8-r
+							/*CP_ACP*/;
 	int len = WideCharToMultiByte(cp, // ANSI Code Page
 		0, // No special handling of unmapped chars
 		ws.c_str(), // wide-character string to be converted
